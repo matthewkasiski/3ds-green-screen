@@ -20,7 +20,7 @@ jobs:
           persist-credentials: false
 
       - name: build
-        run: make -j2 VERBOSE=1
+        run: make -j`nproc`
 
       - name: test
         run: ls -la
