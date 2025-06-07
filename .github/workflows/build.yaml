@@ -1,0 +1,26 @@
+name: Build 
+
+on:
+  push:
+    branches:
+     - '**'
+  pull_request:
+
+jobs:
+  build:
+    name: Test build
+    runs-on: ubuntu-latest
+    container:
+      image: 'devkitpro/devkitarm'
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: build
+        run: make -j`nproc`
+
+      - name: test
+        run: ls -la
+        
